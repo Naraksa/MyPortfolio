@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polluted Air</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="https://kit.fontawesome.com/df60f14fd4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1 class = "title">Polluted Air Prediction</h1>
+        <section class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#methodology">Methodology</a></li>
+                    <li><a href="#results">Results and Challenges</a></li>
+                    <li><a href="#projects">Conclusion and Recommendations</a></li>
+                    <li><a href="#references">Reference</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main>
+        <section class="glass-container" id="introduction">
+            <h2 class="header">I. Introduction</h2>
+                <div>
+                    <h3 class = "sub-header">1.1. Introduction to the project</h3>
+                    <p>Air pollution is one of the most serious environmental problems in the world today. It is caused by various factors such as vehicle engines, factories, burning trash, and other sources. In Phnom Penh, Cambodia's capital city, air pollution has become a significant concern because of human activities. According to AirNet sensors Data Quality Validation Service, Cambodia ranked 164th out of 180 countries in the environmental performance index of air quality in 2018. To tackle this issue, we wanted to create an air pollution prediction called Polluted Air Prediction by collecting data and training it to predict the quality of the air while also alerting people living in Phnom Penh. This project aims to predict the air quality a week ahead for people to be aware of the polluted air in the city. </p>
+                </div>
+                <div>
+                    <h3 class = "sub-header">1.2. Problem Statement</h3>
+                    <p>The main reason we developed the PA (Pollution Alert) Prediction app is that many people don’t pay attention to the risks of air pollution. In Phnom Penh and other places, the air quality has gotten worse day by day, but is often overlooked.                   
+                    <br><br>
+                    The first issue is the lack of awareness about air quality guidelines. Since it is an invisible threat and couldn't be seen by the eye, unlike polluted water. It could harm our health slowly over time, which is why people don't notice it. Moreover, in polluted cities, people are just getting used to polluted air as normal air, which doesn't concern them. 
+                    <br><br>
+                    Another problem is the weak enforcement of air pollution control policies. Most industries actually resist regulations because reducing pollution costs a lot. While in rural areas, most air monitoring systems are poorly maintained, so the air pollution goes unchecked. 
+                    <br><br>
+                    Finally, we are seeing more health problems caused by poor air quality. People are suffering from breathing difficulties, allergies, and asthma that are caused by polluted air. Many of these health issues could be reduced if people were better informed and prepared for it. </p>
+                </div>
+                <div>
+                    <h3 class = "sub-header">1.3. Objectives and Scope of Project</h3>
+                    <p>The main objective of this project is to study the role of air pollution guidelines in creating an environmentally friendly environment and maintaining health. This project includes studying guidelines, predicting air conditions, and making recommendations.
+                    <br><br>
+                    Firstly, the main key pollutants of polluted air are PM, Ozone (O3), Carbon Monoxide (CO), Nitrogen Dioxide (NO2). PM refers to particulate matter in the air that has a diameter of micrometers or smaller. PM 2.5 is known to pose more health risks than PM 10. Being exposed to these pollutants is also harmful to health, causing a range of serious issues such as respiratory problems, heart disease, a weak immune system, and, in the worst cases, premature death.
+                    <br><br>
+                    Secondly, this project focuses on predicting the air quality in Phnom Penh because of the health concerns caused by polluted air. We have trained our model using previous datasets to accurately predict air quality. The model provides a 7-day forecast that allows people to prepare in advance, and it also alerts via a telegram bot. 
+                    <br><br>
+                    Lastly, we suggest several ways to protect yourself from air pollution and the community's help. These actions can be effective in tackling polluted air while also promoting a green city and sustainable practices.</p>
+                </div>
+        </section>
+
+        <section class="glass-container" id="methodology">
+            <h2 class="header">II. Methodology</h2>
+            <p>This project aims to solve a real-world problem, requiring complex algorithms and analysis to make the application work well. Initially, we will need to consider finding the right previous dataset. We will then preprocess the data and visualize it to analyze the flow of our data better. The next important step is to train a model to predict the air quality index 7 days ahead. After training, we will need to evaluate the model using the cross-validation method and error measurement using RMSE, MAE, MSE, RMSE percentage, and R-square. Thereafter, we proceed to add an additional feature, which is none other than sending an alert notification to the Telegram bot to save the predicted data. The last step is to build a user-friendly web interface to visualize our code-based project. The following figure shows the directory and file structure of the whole project. Programming languages used in this project are: Python and a little bit of JavaScript for backend development. Plus, marked-up languages such as HTML and CSS are used for the web interface.</p>
+            <div>
+                <h3 class="sub-header">2.1. Data Collection</h3>
+                <p>As suggested, finding the right dataset is the underlying part of this project. We first wanted to integrate API (Application Programming Interface) into our project as well; however, due to time constraints, the limited scope of the project, and the non-free desired API, we made up our mind not to include it. With that being said, data collection has become one of the most challenging steps in the process. That said, we have come up with a solution, and that is to use only the existing dataset without automated data fetching and daily updates.  
+                <br><br>
+                As we have gone through countless datasets, we have found a suitable existing dataset for the project. The AirNet Sensor website provides a lot of helpful information regarding the project, and the most significant one is the air pollutant dataset. It furnishes a separate dataset of two air pollutants, which are PM2.5 and PM10, with a total of around 2100 rows of data from 2022 to the present time. They are in the form of csv file containing useful and calculated values such as date, min, max, median, quartile, standard deviation, and count, all of which are required to use for the project. With those values, it minimizes the hindrance since we do not have to recalculate them. Below is a sneak peek of the given dataset. </p>
+            </div>
+            <div>
+                <h3 class="sub-header">2.2. Data Preprocessing</h3>
+                <p>Having the right dataset, we then proceed to the most essential part of our project which is to preprocess or clean the data. The data preprocessing file is created to ensure that the data is cleaned, and it is sufficient for training the model. The library used in the file is pandas. The file itself contains functions such as load_data(), label_pollutant(), remove_outliers(), filter_low_counts(), split_pollutant() and save_data().  
+                <br><br>
+                Load_data() function is used to load the data from the raw dataset. 
+                <br><br>
+                Label_pollutant() function is used to name the pollutants, which are PM2.5 and PM10, since our dataset has a mix of both pollutants. 
+                <br><br>
+                Remove_pollutant() function is used to remove the extreme pollution value that skews the model. We set the threshold value to only 150 since it is the average air quality index in the real-world scenario. Setting it to this specific value helps our model to learn better and produces a more accurate output. 
+                <br><br>
+                Filter_low_counts() function is for filtering out where the number of measurements is too low or too noisy. 
+                <br><br>
+                Split_by_pollutant() function takes a Pandas Data Frame as input and splits it into two separate data frames based on the value of the pollutant column. Simply put, it separates the data related to two different pollutants (PM2.5 and PM10) into distinct data frames for further analysis and visualization. 
+                <br><br>
+                After preprocessing, the dataset decreased from 2069 rows to only 1901 rows. This is because some rows have missing values, and that can affect our model.</p>
+            </div>
+            <div>
+                <h3 class="sub-header">2.3. Data Visualization</h3>
+                <p>Visualization is the next important step in our project, as it enables us to analyze the structure, distribution, and relationships within the dataset before model training. Visualizing the data gives us valuable insights into patterns, trends, and unusual values that could impact prediction accuracy. We will need to use a decent numbers of Python libraries for the visualization file, such as pandas, matplotlib, seaborn, and pathlib. Pathlib is used to ensure that all plots are saved in a consistent and organized location relative to the project. Aside from that, many functions have been introduced as follows:
+                <br><br>
+                - _save_fig(): it is a helper function used to save a matplotlib figure to the predefines static directory and closes it to free memory. 
+                <br><br>
+                - plot_time_series(): This is to plot the median values of PM2.5 and PM10 over time. 
+                <br><br>
+                - plot_boxplot(): This is to demonstrate the distribution of PM2.5 and PM10.
+                <br><br>       
+                - plot_correlation(): This is to visualize the correlation between PM2.5 and PM10 values on the same dates. The scatterplot shows how strongly correlated their values are; closer to a straight diagonal means a stronger linear relationship. 
+                <br><br>
+                - plot_prediction(): This is to plot actual vs predicted values from a linear regression model, and to obviously see how far the difference is.
+                <br><br>
+                - plot_future_prediction(): This function is used to visualize historical PM values along with 7-day future predictions. It includes plots of past and forecasted PM concentrations on the same timeline.
+                </p>
+            </div>
+            <div>
+                <h3 class="sub-header">2.4. Model Training</h3>
+                <p>Model training is an essential portion as it decides the whole project. To train the model, we choose a supervised machine learning type. In that type, we opt for linear regression as it is a user-friendly and easy-to-use model. Prior notice, this model is used to predict the value of PM2.5 only, since it is the most commonly used to identify AQI. It is the most dangerous pollutant form in the atmosphere, and some are from dust and fires, which can cause disruption to the respiratory system, damage lungs, and reduce the ability of the lungs to exchange gas. 
+                <br><br>
+                Linear Regression is not a suitable model for this project. Air quality data is a type of data that is somehow nonlinear since it is an integration of various pollutants, such as SO2, NO2, O3, Pb, and is affected by many other factors, for example, humidity, wind speed, and traffic situation alike. However, we still choose a linear regression model since our dataset does not contain all those existing factors, and the main reason is that the knowledge we have grasped so far is limited. 
+                <br><br>
+                The model training process involves using Python libraries such as pandas, numpy, joblib, and scikit-learn. Pandas is for data manipulation, scikit-learn is for machine learning, and joblib is for saving and loading trained models. In this part, there are functions such as:
+                <br><br>
+                - create_features(): This function generates lag features to capture recent pollutant values as predictors, and time-based features like day of week and month help capture seasonality or weekly patterns. Creating more features in the dataset produces better results for the model's final accuracy. 
+                <br><br>
+                - train_model(): train model function takes all lag and time features as inputs and splits the data chronologically into training and testing sets. For this model, we use a 70:30 ratio for our model to learn better and yield desirable outcomes. Furthermore, we also use evaluation metrics, such as MSE (Mean Squared Error), RMSE (Root Mean Squared Error), MAE (Mean Absolute Error), R-squared score, and RMSE% % by assuming 500 is the maximum value of the AQI scale. The following figure shows how to calculate AQI (OneSDR, nd):
+                The evaluation metric value tells how far off our model prediction value is from the actual value.  Having said that, we can find the percentage error using the values, as in this case, we use RMSE% (Root Mean Square Error Percentage), and then minus it from 100% to infer the accuracy of the model. 
+                <br><br>
+                - evaluate_model_cv(): To further evaluate the model, we use the cross-validation method. This is to know the performance of our model with the unseen data. We return the value of RMSE to infer the performance accuracy.
+                <br><br>
+                - save_model(): This function saves the trained model using Joblib library.
+                <br><br>
+                - predict_future(): This function generates future predictions for a given number of days by constructing a new feature row using the latest lags number of past median values.
+                <br><br>
+                - classify_and_alert(): This function is used to classify AQI based on PM2.5 value using the standard threshold. We categorize following EPA-style breakpoints.</p>
+            </div>
+            <div>
+                <h3 class="sub-header">2.5. Additional Features</h3>
+                <p>Alerting people is also one of the main reasons why we implement this project. However, this is a case study project; we just want to test the performance of our model and how it sends the alert to people. As for now, this project will send the alert through a Telegram bot once the user clicks on the button “show forecast” on the web interface. We did not concentrate much on implementing this feature; hence, there is not much description for this part yet. 
+                <br><br>
+                This feature will be discussed in detail in the recommendation part.</p>
+            </div>
+            <div>
+                <h3 class="sub-header">2.6. Web Interface</h3>
+                <p>To better visualize the whole project. We use flask for local deployment and HTML, CSS, Javascript to make the web interface more appealing to the eyes. The web interface includes key information about air pollution, button to click “show forecast”, and all of the figures plotted to provide a visual analyzing to the users. 
+                <br><br>
+                To conclude everything, all the functions and code are stored in the main.py file to ensure a clean and that we only need to run the code once to see the result. As for the interface, we place all the code into an app.py file, where we use a Python framework to ensure the flow of the whole website. Furthermore, to ensure the security of our dataset, API key (telegram token), and pickle file when publishing on Github, we put those files into an .env file and store the .env file in a .gitignore file. To use the file stored in those key files, we use two libraries, such as dotenv and os. 
+                <br><br>
+                Total libraries and frameworks: Pandas, Numpy, Matplotlib, seaborn, pathlib, joblib, scikit-learn, request, os, dotenv, and flask.</p>
+            </div>
+        </section>
+
+        <section class="glass-container" id="results">
+            <h2 class="header">III. Results and Challenges</h2>
+            <div>
+                <h3 class="sub-header">3.1. Results</h3>
+                    <p>For the whole project, we did not expect a very accurate model. The reasons will be discussed later on after this point. As mentioned, we used RMSE, MAE, MSE, R-squared, and RMSE% to infer the accuracy of our model.</p>
+                    <p>As seen in the figure, the main.py file runs everything from data preprocessing to sending an alert. Notice, the value of each metric </p>
+                    <div class = "metric-value">
+                        <ul>
+                            <li>RMSE: 27.91</li>
+                            <li>MSE: 778.73</li>
+                            <li>R-squared: 0.36</li>
+                            <li>MAE: 15.29</li>
+                            <li>RMSE%: 5.58%</li>
+                        </ul>
+                    </div>
+                    <p>To be clear, these values tell how far off our predicted value is from the actual value. We can see the RMSE% is 5.58%, which is low and suitable for this university course project. However, it is still not a good value for deployment for public use at all. Those values should be lower than that to ensure that people will get the good predicted value and be ready for it. As for now, for example, if the actual AQI is 100, which is a moderate value and sensitive for a specific group, our predicted value will be ~73 or ~127. Hence, this result shows that we have to work on our model a lot harder to yield a more accurate and consistent value.</p>
+                    <div class = "metric-value">
+                        <ul>
+                            <li>Cross-validation RMSE: 12.62</li>
+                        </ul>
+                    </div>
+                    <p>This value shows that, in case of unseen data, the predicted value is far off, plus/minus 12.62 from the actual value, and that we can infer the performance of our model. It needs to improve a lot.</p>
+            </div>
+            <div>
+                <h3 class="sub-header">3.2. Challenges</h3>
+                <p>Throughout this project, we encountered several challenges that affected the prediction accuracy. 
+                <br><br>
+                    <strong>Lack of datasets:</strong> The dataset used for training and analysis was only about 1900 data. This amount of data made it harder for the model to learn general patterns. As a result, the accuracy has dropped significantly.
+                <br><br>
+                    <strong>Lack of real-time data:</strong> We only have the previous datasets that were used for training. So, we have to update our data manually, which costs a lot of time and is not as reliable as using the API. This affects the model's performance and precision.
+                <br><br>
+                    <strong>Time constraint:</strong> The project had a short timeline, which made it hard to test everything properly and make the model work as well as it could. Since we don’t have real-time data, the training process has to be updated by hand every day.
+                <br><br>
+                    <strong>Complex data processing:</strong> The raw data needed a lot of preparation, such as fixing missing values, converting categories into usable formats, and finding errors. These steps took a lot of time and added complexity to our model.
+                <br><br>
+                    <strong>Low accuracy:</strong> Since our model only contains PM2.5 and PM10, the model has a bit of difficulty in providing accurate and consistent results. If we had other pollutant datasets combined with humidity, wind, and pressure, our model would train better and precisely estimate the air quality in Phnom Penh.</p>
+            </div>
+        </section>
+        
+        <section class="glass-container" id="projects">
+            <h2 class="header">IV. Conclusion and Recommendations</h2>
+            <div>  
+                <h3 class="sub-header">4.1. Conclusion</h3>
+                <p>Air pollution is a serious problem that affects both the environment and our health. This project focuses on the air quality in Phnom Penh and provides a study guide with suggestions. Our model predicts the air quality within 7 days in advance so that everybody can be alert and prepared against the polluted air in the city. In the end, the project's primary goal is to reduce the harmful effects of air pollution and make a healthier place for everyone.</p>
+            </div>
+            <div>
+                <h3 class="sub-header">4.2. Recommendations</h3>
+                <p>We have set certain goals for our future expansion and improvement. These are the following steps:
+                <br><br>
+                    <strong>Real-time data expansion:</strong></Real-time> We plan to increase our data collection efforts and get a better understanding of the atmospheric conditions. We will include other air pollutants such as Nitrogen Dioxide(NO2), Sulfur Dioxide(SO2), Ozone(O3), and Carbon Monoxide(CO), etc. By incorporating these pollutants into our data, the model training will be efficient than what we currently have. Additionally, we will also include weather conditions like humidity, pressure, and wind speed for better training and to enhance the accuracy.
+                <br><br>
+                    <strong>Model Accuracy Improvement:</strong> We want to make our predictions more accurate by using better computer methods. We'll move from daily predictions to hourly updates so people know about air quality changes sooner. We'll carefully check our improved model against real measurements to make sure it works well.
+                <br><br>
+                    <strong>User Alert System:</strong>We will develop a user-friendly alert system. The system will feature a secure login and a database to store user accounts that will allow us to send alerts. We will integrate the alert system with Telegram to send automatic messages to keep users informed when air quality levels get bad. Telegram bot is the first option for us, as we move further, we will implement a fully functioning website and web application to properly send the alert 2-3 days ahead. 
+                <br><br>
+                    <strong>Sensor Development:</strong> We will focus on developing affordable air quality sensors outside of Phnom Penh. While we're focused on Phnom Penh now, we want to grow our project to other Cambodian cities and rural areas. Different places have different pollution problems, so we'll adjust our approach for each area. We'll start with bigger cities first, then move to other areas over the next year or two.</p>
+            </div>
+        </section>
+
+        <section class="glass-container" id="references">
+            <h2 class="header">V. Reference</h2>
+            <p>Here are some references that we used in this project:</p>
+            <div class = "reference-list">
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/machine-learning/" rel="noopener">GeeksforGeeks. (2025, April 22). Machine Learning tutorial.  </a></li>
+                    <li><a href="https://www.youtube.com/watch?v=0myaZxl4XWw " rel="noopener">GeeksforGeeks. (2023, November 15). Air Quality Index Prediction in Python | Machine Learning Projects | GeeksforGeeks [Video]. YouTube. </a></li>
+                    <li><a href="https://aqicn.org/station/validation/@245662/#comparative " rel="noopener">The World Air Quality Index project. (n.d.). AirNet sensors Data Quality Validation Service: Street 96, Sangkat Wat Phnom, Cambodia. aqicn.org. </a></li>
+                    <li><a href="https://www.iqair.com/cambodia/phnom-penh/phnom-penh " rel="noopener">Phnom Penh Air Quality Index (AQI) and Cambodia Air Pollution | IQAiR. (n.d.). </a></li>
+                    <li><a href="https://www.onesdr.com/calculate-aqi-air-quality-index/ " rel="noopener">Sam. (2025, April 18). How to Calculate AQI (Air Quality Index) – with Calculator. OneSDR - 🛜 Technology 💵 Finance. </a></li>
+                    <li><a href="https://www.geeksforgeeks.org/predicting-air-quality-index-using-python/ " rel="noopener">GeeksforGeeks. (2024, September 16). Predicting Air Quality Index using Python.  </a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class = "glass-container" id="contact">
+            <h2 class = "header">Contact</h2>
+            <form action="mailto: raksa15278@gmail.com">
+                <fieldset class = "contact-form">
+                    <div class = "form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name" title="Please enter your name">
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email" title="Please enter a valid email address">
+                        
+                        <label for="message">Message:</label>
+                        <textarea type="text" id="message" name="message" rows="4" required></textarea>
+                        
+                        <button type="submit">Send</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Raksa's Portfolio | Supported by Bamnang </p>
+        <div class = "social-media">
+            <a href="https://www.facebook.com/share/1Yhinr4YPV/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@_raksaaa._?_t=ZS-8xv1fG4jZ7w&_r=1" title="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://github.com/Naraksa" title="Github"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/_a.sadw.s_?igsh=cHJ5a3htYWQyMGNr" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://t.me/Ur_raksa" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+
+        <div>
+            <p>Github Link: <a href="https://github.com/Naraksa/Pollutedairpoject" target="_blank" rel="noopener">Polluted Air Project</a></p>
+        </div>
+    </footer>
+</html>
